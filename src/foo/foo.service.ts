@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Foo } from './foo.entity';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class FooService {
@@ -10,11 +10,11 @@ export class FooService {
     private fooRepository: Repository<Foo>,
   ) {}
 
-  find(id: string): Promise<Foo> {
+  async find(id: string): Promise<Foo> {
     return this.fooRepository.findOne(id);
   }
 
-  findAll(): Promise<Foo[]> {
+  async findAll(): Promise<Foo[]> {
     return this.fooRepository.find();
   }
 
@@ -34,8 +34,7 @@ export class FooService {
     return this.fooRepository.findOne(id);
   }
 
-  async delete(id: string): Promise<void> {
-    await this.fooRepository.delete(id);
-    return;
+  async delete(id: string): Promise<DeleteResult> {
+    return this.fooRepository.delete(id);
   }
 }

@@ -37,18 +37,18 @@ export class FooController {
 
   @Put(':id')
   @UsePipes(new JoiValidationPipe(FOO_SCHEMA))
-  update(@Param('id', ParseUUIDPipe) id, @Body() foo: Foo) {
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() foo: Foo) {
     return this.fooService.update(id, foo);
   }
 
   @Patch(':id')
   @UsePipes(new JoiValidationPipe(FOO_SCHEMA_PATCH))
-  patch(@Param('id', ParseUUIDPipe) id, @Body() foo: Foo) {
+  patch(@Param('id', ParseUUIDPipe) id: string, @Body() foo: Foo) {
     return this.fooService.patch(id, foo);
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseUUIDPipe) id) {
+  delete(@Param('id', ParseUUIDPipe) id: string) {
     return this.fooService.delete(id);
   }
 }
