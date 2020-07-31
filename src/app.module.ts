@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DynamooseModule } from 'nestjs-dynamoose';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FooModule } from './foo/foo.module';
 import { Foo } from './foo/foo.entity';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { BarModule } from './bar/bar.module';
 
 @Module({
   imports: [
@@ -14,7 +17,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       keepConnectionAlive: true, //had to do this to keep e2e tests from bombing, see https://github.com/nestjs/typeorm/issues/61
       entities: [Foo],
     }),
+    DynamooseModule.forRoot({
+      aws: {
+        region: 'localhost',
+        accessKeyId: '',
+        secretAccessKey: ''
+      },
+      local: true,
+      model: {
+        create: true
+      }
+    }),
     FooModule,
+    BarModule,
   ],
   controllers: [AppController],
   providers: [AppService],

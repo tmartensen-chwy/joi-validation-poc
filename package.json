@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "dynamo:local": "local-dynamo --database_dir=dynamo --port 8000"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -27,13 +28,17 @@
     "@nestjs/swagger": "^4.5.12",
     "@nestjs/typeorm": "^7.1.0",
     "@types/hapi__joi": "^17.1.4",
+    "dynamoose": "^2.3.0",
     "joi": "^17.1.1",
+    "local-dynamo": "^0.6.0",
+    "nestjs-dynamoose": "^0.2.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "sqlite3": "^5.0.0",
     "swagger-ui-express": "^4.1.4",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
