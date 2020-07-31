@@ -15,7 +15,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  // Start Local DyanamoDB here
+  // Start Local DynamoDB here
   localDynamo.launch({
     port: 8000,
     dir: 'dynamo',
