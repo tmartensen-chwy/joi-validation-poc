@@ -71,4 +71,10 @@ describe('FooController (e2e)', () => {
     .expect(200)
     .expect({...currentFoo, foo: 'Even More Foo', id: currentFoo.id})
   });
+
+  it('/foo/:id (DELETE)', async () => {
+    return request(app.getHttpServer())
+    .delete(`/foo/${currentFoo.id}`)
+    .expect(200)
+  })
 });
