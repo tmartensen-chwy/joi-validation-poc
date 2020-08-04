@@ -6,7 +6,7 @@ export interface SubscriptionKey {
 export interface Subscription extends SubscriptionKey {
   gsi1pk: string;
   gsi1sk: string;
-  gsi3pk: Number;
+  gsi3pk: number;
   gsi3sk: string;
   memberid: string;
   subid: string;
@@ -15,19 +15,19 @@ export interface Subscription extends SubscriptionKey {
   status: string;
   editorid: string;
   currency: string;
-  totalprod: Number;
-  totaltax: Number;
-  totalshp: Number;
-  totalshptax: Number;
-  totaladj: Number;
-  blocked: Boolean;
+  totalprod: number;
+  totaltax: number;
+  totalshp: number;
+  totalshptax: number;
+  totaladj: number;
+  blocked: boolean;
   bchan: string;
   ip: string;
   siteid: string;
   sub_siteid: string;
   orgid: string;
   source_orderid: string;
-  ffm_freq: Number;
+  ffm_freq: number;
   ffm_uom: string;
   ffm_next_date: Date;
   lastpreprocess: Date;
@@ -37,8 +37,8 @@ export interface Subscription extends SubscriptionKey {
   cancel_comment: string;
   cancel_bchan: string;
   cancel_by: string;
-  promos: Set<String>;
-  _ver: Number;
+  promos: Set<string>;
+  _ver: number;
   createdAt: Date;
   updatedAt: Date;
 }

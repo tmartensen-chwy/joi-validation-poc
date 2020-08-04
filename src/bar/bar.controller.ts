@@ -11,7 +11,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { JoiValidationPipe } from '../joi-validation.pipe';
-import { BAR_SCHEMA, BAR_SCHEMA_PATCH } from "../validation-schemas";
+import { BAR_SCHEMA, BAR_SCHEMA_PATCH } from '../validation-schemas';
 import { Bar } from './bar.interface';
 import { BarService } from './bar.service';
 

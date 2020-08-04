@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DynamooseModule } from "nestjs-dynamoose";
+import { DynamooseModule } from 'nestjs-dynamoose';
 
-import { BarController } from "./bar.controller";
-import { BarSchema } from "./bar.schema";
+import { BarController } from './bar.controller';
+import { BarSchema } from './bar.schema';
 import { BarService } from './bar.service';
 
 @Module({

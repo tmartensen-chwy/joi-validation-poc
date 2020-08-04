@@ -19,11 +19,7 @@ describe('FooController (e2e)', () => {
   });
 
   afterAll(async () => {
-    await getConnection()
-      .createQueryBuilder()
-      .delete()
-      .from(Foo)
-      .execute();
+    await getConnection().createQueryBuilder().delete().from(Foo).execute();
   });
 
   it('/foo (POST)', async () => {
@@ -56,25 +52,25 @@ describe('FooController (e2e)', () => {
       .put(`/foo/${currentFoo.id}`)
       .send(updatedFoo)
       .expect(200)
-      .expect({...updatedFoo, id: currentFoo.id})
+      .expect({ ...updatedFoo, id: currentFoo.id });
 
     currentFoo = response.body;
   });
 
   it('/foo/:id (PATCH)', async () => {
     const patchedFoo = {
-      foo: 'Even More Foo'
+      foo: 'Even More Foo',
     };
     return request(app.getHttpServer())
-    .patch(`/foo/${currentFoo.id}`)
-    .send(patchedFoo)
-    .expect(200)
-    .expect({...currentFoo, foo: 'Even More Foo', id: currentFoo.id})
+      .patch(`/foo/${currentFoo.id}`)
+      .send(patchedFoo)
+      .expect(200)
+      .expect({ ...currentFoo, foo: 'Even More Foo', id: currentFoo.id });
   });
 
   it('/foo/:id (DELETE)', async () => {
     return request(app.getHttpServer())
-    .delete(`/foo/${currentFoo.id}`)
-    .expect(200)
-  })
+      .delete(`/foo/${currentFoo.id}`)
+      .expect(200);
+  });
 });

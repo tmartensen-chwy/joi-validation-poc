@@ -24,9 +24,8 @@ export class SubscriptionController {
   }
 
   @Get(':pk')
-  findSubscription(    @Param('pk', ParseUUIDPipe) pk: string,
-  ) {
-    return this.subscriptionService.find({pk, sk:pk})
+  findSubscription(@Param('pk', ParseUUIDPipe) pk: string) {
+    return this.subscriptionService.find({ pk, sk: pk });
   }
 
   @Post(':pk/items')
