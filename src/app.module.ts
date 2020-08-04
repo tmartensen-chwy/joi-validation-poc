@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { FooModule } from './foo/foo.module';
 import { Foo } from './foo/foo.entity';
 import { BarModule } from './bar/bar.module';
+import { SubscriptionModule } from './subscription/subscription.module';
 
 @Module({
   imports: [
@@ -21,15 +22,16 @@ import { BarModule } from './bar/bar.module';
       aws: {
         region: 'localhost',
         accessKeyId: '',
-        secretAccessKey: ''
+        secretAccessKey: '',
       },
       local: true,
       model: {
-        create: true
-      }
+        create: true,
+      },
     }),
     FooModule,
     BarModule,
+    SubscriptionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

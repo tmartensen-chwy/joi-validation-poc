@@ -5,5 +5,5 @@ export interface BarKey {
 export interface Bar extends BarKey {
   name: string;
   email?: string;
-  bar?: string
+  bar?: string;
 }
