@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as localDynamo from 'local-dynamo';
+import * as DynamoDbLocal from 'dynamodb-local';
+import * as path from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -16,11 +17,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   // Start Local DynamoDB here
-  localDynamo.launch({
-    port: 8000,
-    dir: 'dynamo',
-    heap: '512m',
-  });
+  await DynamoDbLocal.launch(8000, path.join(__dirname, '..', 'dynamo'));
 
   await app.listen(3000);
 }

@@ -1,11 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import * as DynamoDbLocal from 'dynamodb-local';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 
 describe('BarController (e2e)', () => {
   let app: INestApplication;
   let currentBar;
+
+  beforeAll(async () => {
+    // launch in-memory db
+    await DynamoDbLocal.launch(8000, null, [], false, true);
+  });
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -14,6 +20,10 @@ describe('BarController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async () => {
+    DynamoDbLocal.stop(8000);
   });
 
   it('/bar (POST)', async () => {
