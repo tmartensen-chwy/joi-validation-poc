@@ -5,16 +5,29 @@ export const SubscriptionSchema = new Schema(
     pk: {
       type: String,
       hashKey: true,
+      // set: (value:string) => `SUB#${value}`,
+      // get: (value:string) => value.slice(4)
     },
     sk: {
       type: String,
       rangeKey: true,
+      // set: (value:string) => `SUB#${value}`,
+      // get: (value:string) => value.slice(4)
     },
-    gsi1pk: String,
-    gsi1sk: String,
-    gsi3pk: Number,
-    gsi3sk: String,
-    memberid: String,
+    memberid: {
+      type: String,
+      index: {
+        name: 'memberid_idx',
+        global: true,
+      },
+    },
+    source_orderid: {
+      type: String,
+      index: {
+        name: 'source_orderid_idx',
+        global: true,
+      },
+    },
     subid: String,
     name: String,
     kount: String,
@@ -32,7 +45,6 @@ export const SubscriptionSchema = new Schema(
     siteid: String,
     sub_siteid: String,
     orgid: String,
-    source_orderid: String,
     ffm_freq: Number,
     ffm_uom: String,
     ffm_next_date: Date,

@@ -5,8 +5,9 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  Query,
 } from '@nestjs/common';
-import { Subscription } from './subscription.interface';
+import { Subscription, SubscriptionQuery } from './subscription.interface';
 import { SubscriptionItem } from '../subscription-item/subscription-item.interface';
 import { SubscriptionService } from './subscription.service';
 import { SubscriptionItemService } from '../subscription-item/subscription-item.service';
@@ -19,13 +20,24 @@ export class SubscriptionController {
   ) {}
 
   @Post()
-  createSubscription(@Body() subscription: Subscription) {
+  createSubscription(
+    @Body() subscription: Subscription,
+  ): Promise<Subscription> {
     return this.subscriptionService.create(subscription);
   }
 
   @Get(':pk')
-  findSubscription(@Param('pk', ParseUUIDPipe) pk: string) {
-    return this.subscriptionService.find({ pk, sk: pk });
+  findSubscriptionById(
+    @Param('pk', ParseUUIDPipe) pk: string,
+  ): Promise<Subscription> {
+    return this.subscriptionService.findByKey({ pk, sk: pk });
+  }
+
+  @Get()
+  findSubscriptionByFilter(
+    @Query() query?: SubscriptionQuery,
+  ): Promise<Subscription[]> {
+    return this.subscriptionService.find(query);
   }
 
   @Post(':pk/items')

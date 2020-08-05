@@ -4,10 +4,6 @@ export interface SubscriptionKey {
 }
 
 export interface Subscription extends SubscriptionKey {
-  gsi1pk: string;
-  gsi1sk: string;
-  gsi3pk: number;
-  gsi3sk: string;
   memberid: string;
   subid: string;
   name: string;
@@ -41,4 +37,12 @@ export interface Subscription extends SubscriptionKey {
   _ver: number;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface SubscriptionQuery {
+  filter_by?: string;
+  filter_by_id?: string;
+  limit?: number;
+  start_at?: string;
+  include_items?: boolean;
 }

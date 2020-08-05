@@ -5,10 +5,14 @@ export const SubscriptionItemSchema = new Schema(
     pk: {
       type: String,
       hashKey: true,
+      // set: (value:string) => `SUB#${value}`,
+      // get: (value:string) => value.slice(4)
     },
     sk: {
       type: String,
       rangeKey: true,
+      // set: (value: string) => `ITEM#${value}`,
+      // get: (value: string) => value.slice(5)
     },
     gsipk1: String,
     gsisk1: String,

@@ -14,8 +14,8 @@ export class SubscriptionItemService {
   ) {}
 
   create(pk: string, item: SubscriptionItem) {
-    const itemId = uuidv4();
-    return this.model.create({ ...item, pk, sk: itemId });
+    const sk = uuidv4();
+    return this.model.create({ ...item, pk, sk });
   }
 
   find(key: SubscriptionItemKey) {
