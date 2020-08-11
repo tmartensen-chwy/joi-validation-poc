@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  localstack_test:
+    image: localstack/localstack:0.11.2
+    command: localstack start
+    ports:
+      - '4567:4567'
+    environment:
+      - SERVICES=dynamodb
+      - EDGE_PORT=4567
+      - DATA_DIR=/tmp/localstack
+      - AWS_ACCESS_KEY_ID=X
+      - AWS_SECRET_ACCESS_KEY=x
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - localstack_test:/tmp/localstack
+volumes:
+  localstack_test:
